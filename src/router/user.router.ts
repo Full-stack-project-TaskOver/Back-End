@@ -5,7 +5,7 @@ import Router from 'express'
 
 const router = Router();
 
-router.post('/Sign-up', SignUp)
+router.post('/sign-up', SignUp)
 router.post('/sign-in', SignIn)
 router.post('/forgotPass', ForgotPass)
 
