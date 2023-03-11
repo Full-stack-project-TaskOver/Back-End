@@ -2,7 +2,7 @@ import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
 import { checkAdmin } from '../../helpers/checkAdmin';
 
-
+// hggfilkf
 export const deleteUserInSession = async (req:Request, res:Response)=>{
     try{
 
