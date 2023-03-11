@@ -1,7 +1,7 @@
 import Router from 'express'
 import { addTask } from '../controler/task/addTask';
 import { deleteTask } from '../controler/task/deleteTaske';
-import auth from '../middileware/auth';
+import auth from '../middleware/auth';
 import { updateTask } from '../controler/task/updateTask';
 import { allTaskOfUser } from '../controler/task/allTaskOfUser';
 const router = Router();
