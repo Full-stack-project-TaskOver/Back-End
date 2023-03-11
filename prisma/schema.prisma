@@ -37,7 +37,7 @@ model Task{
   assignBy String
   status Status @default(TODO)
   sessionId String
-  userId String
+  userId String?
   user User? @relation(fields: [userId], references: [id])
   session Session? @relation(fields: [sessionId] , references: [id])
 }
