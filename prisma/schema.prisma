@@ -34,11 +34,11 @@ model Task{
   description String
   createdDate DateTime @default(now())
   deadline DateTime?
-  assignBy String
+  assignById String
   status Status @default(TODO)
   sessionId String
-  userId String
-  user User? @relation(fields: [userId], references: [id])
+  assignToId String
+  user User? @relation(fields: [assignToId], references: [id])
   session Session? @relation(fields: [sessionId] , references: [id])
 }
 
