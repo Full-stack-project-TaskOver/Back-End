@@ -7,14 +7,14 @@ const Seccret = process.env.mySeccret
 
 interface User{
     id: string
-    role: string
 }
 const auth = (req:Request, res:Response, next:NextFunction)=>{
     try{
-        const token = req.headers.authorization
+        const header = req.headers.authorization
+        const token = header?.split(' ')[1]
         if(!token){
             return res.status(403).json({
-                "message":"you are not authorization"
+                "message":"you are not authorized"
             })
         }
         const user = jwt.verify(token, Seccret as string) as User

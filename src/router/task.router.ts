@@ -1,13 +1,13 @@
 import Router from 'express'
-import { addTask } from '../controler/task/addTask';
-import { deleteTask } from '../controler/task/deleteTaske';
+import { addTask } from '../controller/task/addTask';
+import { deleteTask } from '../controller/task/deleteTask';
 import auth from '../middleware/auth';
-import { updateTask } from '../controler/task/updateTask';
-import { allTaskOfUser } from '../controler/task/allTaskOfUser';
+import { updateTask } from '../controller/task/updateTask';
+import { allTaskOfUser } from '../controller/task/allTaskOfUser';
 const router = Router();
 
-router.post('/new',auth, addTask)
-router.post('/',auth, allTaskOfUser)
+router.post('/',auth, addTask)
+router.get('/',auth, allTaskOfUser)
 router.delete('/',auth, deleteTask)
 router.put('/',auth, updateTask)
 

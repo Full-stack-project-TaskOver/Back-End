@@ -1,6 +1,6 @@
-import { ForgotPass } from "../controler/user/ForgotPass";
-import { SignUp } from "../controler/user/Sign-up";
-import { SignIn } from "../controler/user/sign-in";
+import { ForgotPass } from "../controller/user/ForgotPass";
+import { SignUp } from "../controller/user/Sign-up";
+import { SignIn } from "../controller/user/sign-in";
 import Router from 'express'
 
 const router = Router();

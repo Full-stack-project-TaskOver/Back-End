@@ -33,16 +33,22 @@ model Task{
   title String
   description String
   createdDate DateTime @default(now())
-  status Status
+  deadline DateTime?
+  assignBy String
+  status Status @default(TODO)
+  sessionId String
   userId String
   user User? @relation(fields: [userId], references: [id])
-  
+  session Session? @relation(fields: [sessionId] , references: [id])
 }
 
 model Session{
   id String @id @default(uuid())
   name String
+  description String?
+  type SessionType
   creatorId String
+  task Task[]
   userAndSession UserAndSession[]
 }
 
@@ -60,9 +66,15 @@ enum Role {
   ADMIN
 }
 
+enum SessionType {
+  OpenSource
+  Company
+  Family
+  Personal
+}
+
 enum Status {
   TODO
   INPROGRESS
-  BLOCED
   COMPLETED
 }
