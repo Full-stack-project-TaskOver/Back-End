@@ -6,6 +6,8 @@ export const allUsersInSessions = async (req: Request, res: Response) => {
   try {
     const session = await prisma.userAndSession.findMany({
       select:{
+        id: true,
+        point:true,
         session:true,
         user:true
       }

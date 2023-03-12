@@ -58,13 +58,14 @@ model UserAndSession{
   session Session? @relation(fields: [sessionId], references: [id])
   userId String
   user User? @relation(fields: [userId], references: [id])
+  point Int @default(0)
 }
 
 
-enum Role {
-  USER
-  ADMIN
-}
+// enum Role {
+//   USER
+//   ADMIN
+// }
 
 enum SessionType {
   OpenSource

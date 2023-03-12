@@ -6,12 +6,14 @@ import validate from '../middleware/validate';
 
 import auth from '../middleware/auth';
 import Router from 'express'
+import { addPointToUser } from '../controller/userAndSession/addPointToUser';
 
 const router = Router();
 
 router.post('/',validate(addUsersToSessionValidate), addUsersToSession)
 router.get('/', allUsersInSessions)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
+router.put('/', addPointToUser)
 
 
 

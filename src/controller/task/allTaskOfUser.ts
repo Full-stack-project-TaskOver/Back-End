@@ -10,6 +10,7 @@ export const allTaskOfUser = async (req:Request, res:Response)=>{
                 id: res.locals.user.id
             },
             select:{
+                
                 name:true,
                 task:true,
             }
