@@ -10,13 +10,13 @@ export const allUsersInSessions = async (req: Request, res: Response) => {
         user:true
       }
     });
-    if (session) {
+    if (session.length == 0) {
       res.json({
-        message: res.json(session),
+        message: 'There is no Users in Sessions',
       });
     } else {
-      res.status(500).json({
-        message: 'There is no Users in Sessions',
+      res.json({
+        message:session,
       });
     }
   } catch (error) {

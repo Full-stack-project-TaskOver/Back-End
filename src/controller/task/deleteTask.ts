@@ -6,14 +6,14 @@ export const deleteTask = async (req: Request, res: Response) => {
   try {
     // يشيك اذا اليوزر الي مسوي لوق ان ادمن بهذي السشن ولا لا
     if (!(await checkAdmin(res.locals.user.id, req.body.sessionId))) {
-      res.json({
+      return res.json({
         message: 'You are not an admin in this session',
       });
     }
     const task = await prisma.task.deleteMany({
       where: {
         id: req.body.id,
-        assignBy: res.locals.user.id,
+        assignById: res.locals.user.id,
       },
     });
     if (task.count == 0) {

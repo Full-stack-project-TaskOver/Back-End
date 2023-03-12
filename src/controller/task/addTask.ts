@@ -4,11 +4,12 @@ import { Request, Response } from 'express';
 
 export const addTask = async (req: Request, res: Response) => {
   // اليوزر الي مسوي لوق ان لازم يكون ادمن و يكون عنده سشن
-
-
+  
+  
+  try {
   // يشيك اذا اليوزر الي مسوي لوق ان ادمن بهذي السشن ولا لا
   if(!await checkAdmin(res.locals.user.id , req.body.sessionId)){
-    res.json({
+    return res.json({
       message:'You are not an admin in this session'
     })
   }
@@ -18,7 +19,7 @@ export const addTask = async (req: Request, res: Response) => {
   const user = await prisma.userAndSession.findFirst({
     where:{
       sessionId:req.body.sessionId,
-      userId:req.body.userId
+      userId:req.body.assignToId
     }
   });
   if(!user){
@@ -28,7 +29,6 @@ export const addTask = async (req: Request, res: Response) => {
   }
 
 
-  try {
     const task = await prisma.task.create({
       data:{
             title: req.body.title,
@@ -37,7 +37,7 @@ export const addTask = async (req: Request, res: Response) => {
             user: {
               // هنا نربط التاسك هذي باليوزر الي بيشتغل عليها
               connect:{
-                id:req.body.userId
+                id:req.body.assignToId
               }
             },
             session:{
@@ -46,7 +46,7 @@ export const addTask = async (req: Request, res: Response) => {
                 id:req.body.sessionId
               }
             },
-            assignBy:res.locals.user.id
+            assignById:res.locals.user.id
       }
     });
     if (task) {

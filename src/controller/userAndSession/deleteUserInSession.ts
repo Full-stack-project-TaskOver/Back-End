@@ -2,7 +2,6 @@ import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
 import { checkAdmin } from '../../helpers/checkAdmin';
 
-// hggfilkf
 export const deleteUserInSession = async (req:Request, res:Response)=>{
     try{
 
@@ -17,7 +16,7 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
         //     }) 
         // }
         if(!await checkAdmin(res.locals.user.id , req.body.sessionId)){
-            res.json({
+            return res.json({
               message:'You are not an admin in this session'
             })
           }
@@ -30,10 +29,11 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
             res.json({
                 message: "no user"
             })  
+        } else {
+            res.json({
+                message: "User deleted"
+            })
         }
-        res.json({
-            message: "User deleted"
-        })
     }catch(error){
         console.log(error);
     }

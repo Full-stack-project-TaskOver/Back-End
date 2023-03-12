@@ -7,7 +7,7 @@ export const updateTask = async (req: Request, res: Response) => {
   try {
     // يشيك اذا اليوزر الي مسوي لوق ان ادمن بهذي السشن ولا لا
     if (!(await checkAdmin(res.locals.user.id, req.body.sessionId))) {
-      res.json({
+      return res.json({
         message: 'You are not an admin in this session',
       });
     }
@@ -15,7 +15,7 @@ export const updateTask = async (req: Request, res: Response) => {
     const task = await prisma.task.updateMany({
       where: {
         id: req.body.id,
-        assignBy:id
+        assignById:id
       },
       data: {
         title: req.body.title,
