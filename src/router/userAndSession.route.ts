@@ -1,6 +1,8 @@
 import {addUsersToSession} from '../controller/userAndSession/addUsersToSession'
 import { allUsersInSession } from '../controller/userAndSession/allUsersInSession';
 import { deleteUserInSession } from '../controller/userAndSession/deleteUserInSession';
+import { allUsersPointsInSession } from '../controller/userAndSession/allUsersPointsInSession';
+
 import { addUsersToSessionValidate , deleteUserInSessionValidate } from '../zodSchema/zod.userAndSession';
 import validate from '../middleware/validate';
 
@@ -15,6 +17,7 @@ router.post('/',validate(addUsersToSessionValidate), addUsersToSession)
 router.get('/', allUsersInSession)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
 router.put('/', addPointToUser)
+router.post('/points', allUsersPointsInSession)
 
 
 
