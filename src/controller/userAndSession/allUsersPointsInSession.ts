@@ -2,16 +2,24 @@ import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
 
 export const allUsersPointsInSession = async (req: Request, res: Response) => {
-  // هذي بس تستعرض السشنز و اليوزرز الي بداخلهم
+
   try {
     const session = await prisma.userAndSession.findMany({
         where:{
             sessionId:req.body.sessionId
         },
+        orderBy:{
+          point:'desc'
+        },
       select:{
         point:true,
-        user:true
-      }
+        user:{
+          select:{
+            id:true,
+            name:true,
+          }
+        }
+      },
     });
     if (session.length == 0) {
       res.json({
@@ -19,7 +27,7 @@ export const allUsersPointsInSession = async (req: Request, res: Response) => {
       });
     } else {
       res.json({
-        message:session,
+        session,
       });
     }
   } catch (error) {
