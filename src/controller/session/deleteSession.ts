@@ -12,7 +12,7 @@ export const deleteSession = async (req: Request, res: Response) => {
     }
     const session = await prisma.session.deleteMany({
       where: {
-        id: req.body.id,
+        id: req.params.id,
         creatorId: res.locals.user.id,
       },
     });

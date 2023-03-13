@@ -16,7 +16,7 @@ export const updateSession = async (req: Request, res: Response) => {
         creatorId: res.locals.user.id,
       },
       data: {
-        name: req.body.name,
+        title: req.body.title,
         description: req.body.description,
         type: req.body.type,
       },

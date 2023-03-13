@@ -6,13 +6,12 @@ const zod = z.object({
     invalid_type_error: 'id must be string',
   }),
 
-  name: z
+  title: z
     .string({
-      required_error: 'Name is required',
-      invalid_type_error: 'Name must be a string',
+      required_error: 'Title is required',
+      invalid_type_error: 'Title must be a string',
     })
-    .min(1, 'Name cant be less than 1 character')
-    .max(20, 'Name cant be more than 20 characters'),
+    .min(1, 'Name cant be less than 1 character'),
 
   description: z
     .string({
@@ -32,7 +31,7 @@ const zod = z.object({
 });
 
 export const addSessionValidate = z.object({
-  body: zod.pick({ name: true, type: true }),
+  body: zod.pick({ title: true, type: true }),
 });
 
 export const deleteSessionValidate = z.object({

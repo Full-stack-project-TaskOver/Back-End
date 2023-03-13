@@ -15,7 +15,7 @@ const router = Router();
 
 router.post('/', auth, validate(addSessionValidate), addSession);
 router.get('/', auth, allSessionOfUser);
-router.delete('/', auth, validate(deleteSessionValidate), deleteSession);
+router.delete('/:id', auth, validate(deleteSessionValidate), deleteSession);
 router.put('/', auth, validate(updateSessionValidate), updateSession);
 
 export default router;

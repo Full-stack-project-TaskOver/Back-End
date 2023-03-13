@@ -33,7 +33,7 @@ export const addTask = async (req: Request, res: Response) => {
       data:{
             title: req.body.title,
             description: req.body.description,
-            status: req.body.status,
+            // status: req.body.status,
             user: {
               // هنا نربط التاسك هذي باليوزر الي بيشتغل عليها
               connect:{

@@ -1,14 +1,14 @@
 import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
 
-export const allUsersInSessions = async (req: Request, res: Response) => {
+export const allUsersInSession = async (req: Request, res: Response) => {
   // هذي بس تستعرض السشنز و اليوزرز الي بداخلهم
   try {
     const session = await prisma.userAndSession.findMany({
+    //   where:{
+    //      sessionId: req.body.sessionId
+    //   },
       select:{
-        id: true,
-        point:true,
-        session:true,
         user:true
       }
     });
