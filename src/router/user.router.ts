@@ -6,10 +6,12 @@ import validate from '../middleware/validate';
 import { signInValidate ,signUpValidate , updateUserValidate,forgotPassValidate } from '../zodSchema/zod.user';
 import Router from 'express';
 import auth from '../middleware/auth';
+import { getUserById } from '../controller/user/getUserById';
 
 const router = Router();
 
 router.post('/sign-up', validate(signUpValidate), SignUp);
+router.get('/',auth, getUserById);
 router.post('/sign-in', validate(signInValidate), SignIn);
 router.post('/forgotPass', validate(forgotPassValidate),ForgotPass);
 router.put('/', validate(updateUserValidate), updateUser);
