@@ -34,14 +34,9 @@ export const addSessionValidate = z.object({
   body: zod.pick({ title: true, type: true }),
 });
 
-export const deleteSessionValidate = z.object({
-  body: zod.pick({ id: true }),
-});
-
 export const updateSessionValidate = z.object({
   body: zod.pick({ id: true, name: true, description: true, type: true }),
 });
 
 export type addSession = TypeOf<typeof addSessionValidate>['body'];
-export type deleteSession = TypeOf<typeof deleteSessionValidate>['body'];
 export type updateSession = TypeOf<typeof updateSessionValidate>['body'];

@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 
 
 
-export const allSessionOfUser = async (req:Request, res:Response)=>{
+export const allSessionAsAdmin = async (req:Request, res:Response)=>{
     try{
         const session = await prisma.session.findMany({
             where:{
