@@ -1,3 +1,4 @@
+import { getSession } from './../controller/session/getSession';
 import { allSessionAsUser } from './../controller/session/allSessionAsUser';
 import Router from 'express';
 import auth from '../middleware/auth';
@@ -16,6 +17,7 @@ const router = Router();
 router.post('/', auth, validate(addSessionValidate), addSession);
 router.get('/AsAdmin', auth, allSessionAsAdmin);
 router.get('/AsUser', auth, allSessionAsUser);
+router.get('/:id', auth, getSession);
 router.delete('/:id', auth, deleteSession);
 router.put('/', auth, validate(updateSessionValidate), updateSession);
 

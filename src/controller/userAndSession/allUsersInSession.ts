@@ -9,7 +9,14 @@ export const allUsersInSession = async (req: Request, res: Response) => {
     //      sessionId: req.body.sessionId
     //   },
       select:{
-        user:true
+        user:{
+          select:{
+            id:true,
+            name:true,
+            email:true,
+            phone:true
+          }
+        }
       }
     });
     if (session.length == 0) {

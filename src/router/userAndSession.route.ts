@@ -12,7 +12,7 @@ import { addPointToUser } from '../controller/userAndSession/addPointToUser';
 
 const router = Router();
 
-router.post('/',validate(addUsersToSessionValidate), addUsersToSession)
+router.post('/',auth , validate(addUsersToSessionValidate), addUsersToSession)
 // router.get('/', allUsersInSessions)
 router.get('/', allUsersInSession)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)

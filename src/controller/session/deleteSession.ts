@@ -10,6 +10,12 @@ export const deleteSession = async (req: Request, res: Response) => {
         message: 'You are not an admin in this session',
       });
     }
+    const deleteUsers = await prisma.userAndSession.deleteMany({
+      where:{
+        sessionId:req.params.id,
+      }
+    })
+
     const session = await prisma.session.deleteMany({
       where: {
         id: req.params.id,
@@ -23,6 +29,8 @@ export const deleteSession = async (req: Request, res: Response) => {
     }
     res.json({
       message: 'Session deleted',
+      session,
+      deleteUsers,
     });
   } catch (error) {
     console.log(error);
