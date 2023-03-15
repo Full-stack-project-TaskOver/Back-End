@@ -1,3 +1,4 @@
+import { leaveSession } from './../controller/session/leaveSession';
 import { getSession } from './../controller/session/getSession';
 import { allSessionAsUser } from './../controller/session/allSessionAsUser';
 import Router from 'express';
@@ -19,6 +20,8 @@ router.get('/AsAdmin', auth, allSessionAsAdmin);
 router.get('/AsUser', auth, allSessionAsUser);
 router.get('/:id', auth, getSession);
 router.delete('/:id', auth, deleteSession);
+router.delete('/leave/:id', auth, leaveSession);
+
 router.put('/', auth, validate(updateSessionValidate), updateSession);
 
 export default router;
