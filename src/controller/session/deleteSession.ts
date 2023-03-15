@@ -15,6 +15,11 @@ export const deleteSession = async (req: Request, res: Response) => {
         sessionId:req.params.id,
       }
     })
+    const deleteTask = await prisma.task.deleteMany({
+      where:{
+        sessionId:req.params.id,
+      }
+    })
 
     const session = await prisma.session.deleteMany({
       where: {
@@ -31,6 +36,7 @@ export const deleteSession = async (req: Request, res: Response) => {
       message: 'Session deleted',
       session,
       deleteUsers,
+      deleteTask
     });
   } catch (error) {
     console.log(error);
