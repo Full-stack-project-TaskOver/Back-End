@@ -14,7 +14,7 @@ const router = Router();
 
 router.post('/',auth , validate(addUsersToSessionValidate), addUsersToSession)
 // router.get('/', allUsersInSessions)
-router.get('/', allUsersInSession)
+router.get('/:id', allUsersInSession)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
 router.put('/', addPointToUser)
 router.post('/points', allUsersPointsInSession)

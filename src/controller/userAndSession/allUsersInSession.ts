@@ -5,9 +5,9 @@ export const allUsersInSession = async (req: Request, res: Response) => {
   // هذي بس تستعرض السشنز و اليوزرز الي بداخلهم
   try {
     const session = await prisma.userAndSession.findMany({
-    //   where:{
-    //      sessionId: req.body.sessionId
-    //   },
+      where:{
+        sessionId:req.params.id
+    },
       select:{
         user:{
           select:{
