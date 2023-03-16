@@ -18,6 +18,6 @@ router.get('/:id', auth, allTaskOfUser);
 router.get('/all-task/:id', auth, allTaskInSession);
 
 router.delete('/', auth,validate(deleteTaskValidate), deleteTask);
-router.put('/', auth,validate(updateTaskValidate), updateTask);
-
+router.put('/', auth, updateTask);
+// validate(updateTaskValidate),
 export default router;
