@@ -17,7 +17,7 @@ router.post('/',auth , validate(addUsersToSessionValidate), addUsersToSession)
 router.get('/:id', allUsersInSession)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
 router.put('/', addPointToUser)
-router.post('/points', allUsersPointsInSession)
+router.get('/points/:id', allUsersPointsInSession)
 
 
 

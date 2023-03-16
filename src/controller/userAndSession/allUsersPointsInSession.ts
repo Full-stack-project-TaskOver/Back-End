@@ -6,7 +6,7 @@ export const allUsersPointsInSession = async (req: Request, res: Response) => {
   try {
     const session = await prisma.userAndSession.findMany({
         where:{
-            sessionId:req.body.sessionId
+            sessionId:req.params.id
         },
         orderBy:{
           point:'desc'

@@ -10,11 +10,12 @@ import {
   deleteTaskValidate,
   updateTaskValidate,
 } from '../zodSchema/zod.task';
+import { allTaskInSession } from '../controller/task/allTasksInSession';
 const router = Router();
 
 router.post('/',validate(addTaskValidate), auth , addTask);
 router.get('/:id', auth, allTaskOfUser);
-// router.get('/all-task/:id', auth, allTaskInSession);
+router.get('/all-task/:id', auth, allTaskInSession);
 
 router.delete('/', auth,validate(deleteTaskValidate), deleteTask);
 router.put('/', auth,validate(updateTaskValidate), updateTask);

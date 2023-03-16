@@ -16,12 +16,32 @@ export const addUsersToSession = async (req: Request, res: Response) => {
             id:req.body.sessionId
         }
     })
+    
 
     if (!checkUser || !checkSession) {
-        res.json({
+        return res.status(400).json({
             message:'Session or user dose not exists'
         })
+    } else {
+      const checkIfUserInSession = await prisma.userAndSession.findFirst({
+        where:{
+          userId:req.body.userId,
+        sessionId:req.body.sessionId
+        }
+      })
+      if (checkIfUserInSession) {
+        return res.status(400).json({
+          message: 'User already in this session !',
+        });
+      }
     }
+
+    if(req.body.userId === res.locals.user.id) {
+      return res.status(400).json({
+        message:'You are the admin in this session'
+    })
+    }
+    
     // بعدين نضيف اليوزر داخل السشن
     const session = await prisma.userAndSession.createMany({
       data: {
