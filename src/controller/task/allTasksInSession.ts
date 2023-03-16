@@ -9,7 +9,13 @@ export const allTaskInSession = async (req:Request, res:Response)=>{
                 id:req.params.id
             },
             select:{
-                task:true
+                task:{
+                    select:{
+                        id:true,
+                        title:true,
+                        // status:true
+                    }
+                }
             }
         })
         if (session.length === 0){
