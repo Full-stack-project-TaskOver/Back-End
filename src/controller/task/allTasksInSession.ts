@@ -13,7 +13,7 @@ export const allTaskInSession = async (req:Request, res:Response)=>{
                     select:{
                         id:true,
                         title:true,
-                        // status:true
+                        status:true
                     }
                 }
             }
