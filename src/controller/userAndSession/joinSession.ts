@@ -1,5 +1,6 @@
 import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
+import { checkAdmin } from '../../helpers/checkAdmin';
 
 export const joinSession = async (req: Request, res: Response) => {
   try {
@@ -23,6 +24,11 @@ export const joinSession = async (req: Request, res: Response) => {
     })
     }
     
+    if(await checkAdmin(res.locals.user.id , req.body.sessionId)){
+      return res.status(400).json({
+        message:'You are the admin in this session'
+      })
+    }
 
     if (!checkSession) {
         return res.status(400).json({
