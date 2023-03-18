@@ -1,7 +1,7 @@
 import { prisma } from '../../config/db';
 import { Request, Response } from 'express';
 
-export const addUsersToSession = async (req: Request, res: Response) => {
+export const joinSession = async (req: Request, res: Response) => {
   try {
     // نشيك اذا اليوزر الي جايني من البدي موجود بالتيبل حقه ولا لا
     const checkUser = await prisma.user.findFirst({
@@ -42,11 +42,6 @@ export const addUsersToSession = async (req: Request, res: Response) => {
       }
     }
 
-    if(req.body.userId === res.locals.user.id) {
-      return res.status(400).json({
-        message:`You are the admin in this session`,
-    })
-    }
     
     // بعدين نضيف اليوزر داخل السشن
     const session = await prisma.userAndSession.createMany({

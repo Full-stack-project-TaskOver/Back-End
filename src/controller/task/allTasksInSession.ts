@@ -13,8 +13,14 @@ export const allTaskInSession = async (req:Request, res:Response)=>{
                     select:{
                         id:true,
                         title:true,
-                        description: true,
-                        status:true
+                        status:true,
+                        description:true,
+                        createdDate: true,
+                        user:{
+                            select:{
+                                name:true
+                            }
+                        }
                     }
                 }
             }
