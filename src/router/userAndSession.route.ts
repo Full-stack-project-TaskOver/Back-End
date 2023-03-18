@@ -17,8 +17,7 @@ const router = Router();
 router.post('/',auth , validate(addUsersToSessionValidate), addUsersToSession)
 router.post('/join-session',auth , validate(addUsersToSessionValidate), joinSession)
 
-// router.get('/', allUsersInSessions)
-router.get('/:sessionId',auth , allUsersInSession)
+router.get('/:id',auth , allUsersInSession)
 router.delete('/:id/:userId',auth, deleteUserInSession)
 router.put('/', addPointToUser)
 router.get('/points/:id', allUsersPointsInSession)
