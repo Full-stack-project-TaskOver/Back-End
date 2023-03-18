@@ -12,11 +12,13 @@ import {
 } from '../zodSchema/zod.task';
 import { allTaskInSession } from '../controller/task/allTasksInSession';
 import { updateTaskStatus } from '../controller/task/updateTaskStatus';
+import { getTaskById } from '../controller/task/getTaskById';
 const router = Router();
 
 router.post('/',validate(addTaskValidate), auth , addTask);
 router.get('/:id', auth, allTaskOfUser);
 router.get('/all-task/:id', auth, allTaskInSession);
+router.post('/details', auth, getTaskById);
 
 router.delete('/', auth,validate(deleteTaskValidate), deleteTask);
 router.put('/', auth,validate(updateTaskValidate), updateTask);

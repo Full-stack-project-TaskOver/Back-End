@@ -19,7 +19,7 @@ const auth = (req:Request, res:Response, next:NextFunction)=>{
         if(!token){
             return res.status(403).json({
                 "message":"you are not authorized"
-            })
+            })  
         }
         const user = jwt.verify(token, Seccret as string) as User
         res.locals.user = user
