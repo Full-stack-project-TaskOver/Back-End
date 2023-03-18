@@ -15,9 +15,9 @@ export const SignIn = async (req:Request, res:Response)=>{
         }
      })
      if(!user){
-        return res.status(400).json({Error:'Wrong email adress'})
+        return res.status(400).json({message:'Wrong email adress'})
      }else if(!await argon2.verify(user.password, req.body.password)){
-        return res.status(400).json({Error:'Wrong password'})
+        return res.status(400).json({message:'Wrong password'})
      }
      const token = jwt.sign({
         id: user.id

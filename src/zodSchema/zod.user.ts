@@ -6,20 +6,19 @@ const zod = z.object({
       required_error: 'name is required',
       invalid_type_error: 'Name must be a string',
     })
-    .min(1, 'Name cant be less than 1 character')
+    .min(1, 'Name is required')
     .max(20, 'Name cant be more than 20 characters'),
 
   email: z
     .string({
       required_error: 'Email  is required',
       invalid_type_error: 'you must write a valid email ',
-    })
-    .email(),
+    }).min(1 , 'Email  is required').email(),
 
   password: z
     .string({
       required_error: 'Password  is required',
-      invalid_type_error: 'Password is required',
+      invalid_type_error: 'Password is invaild',
     })
     .min(8, 'Password must have at least 8 characters')
     .max(25, 'Password can have at most 25 characters'),

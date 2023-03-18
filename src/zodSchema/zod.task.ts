@@ -10,13 +10,13 @@ const zod = z.object({
       required_error: 'Title  is required',
       invalid_type_error: 'Title must be a string',
     })
-    .min(1, 'The title must not be empty'),
+    .min(1, 'Title  is required'),
 
   description: z
     .string({
       required_error: 'Description is required',
       invalid_type_error: 'Description must be a string',
-    })
+    }).min(1,'Description is required')
     .max(250, 'Description can have at most 250 characters'),
 
   deadline: z.date({
@@ -36,7 +36,7 @@ const zod = z.object({
   assignToId: z.string({
     required_error: 'AssignToId is required',
     invalid_type_error: 'AssignToId must be string',
-  }),
+  }).min(1,{message:'AssignTo is required'}),
 
   sessionId: z.string({
     required_error: 'SessionId is required',

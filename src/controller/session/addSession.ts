@@ -13,7 +13,7 @@ export const addSession = async (req:Request, res:Response)=>{
         }
     })
     if(session){
-        res.json({session,
+        res.status(200).json({session,
             message: "Session created!"
         })
     } else {
