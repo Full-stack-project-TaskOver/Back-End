@@ -22,9 +22,9 @@ export const addUsersToSessionValidate = z.object({
 });
 
 export const deleteUserInSessionValidate = z.object({
-  body: zod.pick({ userId:true}),
+  params: zod.pick({ userId:true , sessionId:true}),
 });
 
 
 export type addUsersToSession = TypeOf<typeof addUsersToSessionValidate>['body'];
-export type deleteUserInSession = TypeOf<typeof deleteUserInSessionValidate>['body'];
+export type deleteUserInSession = TypeOf<typeof deleteUserInSessionValidate>['params'];
