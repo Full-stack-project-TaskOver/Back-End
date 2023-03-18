@@ -22,6 +22,8 @@ router.post('/join-session',auth , validate(addUsersToSessionValidate), joinSess
 router.get('/:id', allUsersInSession)
 router.get('/point/:id',auth, getPoint)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
+router.get('/:sessionId',auth , allUsersInSession)
+router.delete('/:id/:userId',auth, deleteUserInSession)
 router.put('/', addPointToUser)
 router.get('/points/:id', allUsersPointsInSession)
 

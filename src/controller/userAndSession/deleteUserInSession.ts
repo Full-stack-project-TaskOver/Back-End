@@ -4,17 +4,6 @@ import { checkAdmin } from '../../helpers/checkAdmin';
 
 export const deleteUserInSession = async (req:Request, res:Response)=>{
     try{
-
-        // const checkUser = await prisma.session.findMany({
-        //     where:{
-        //         creatorId: res.locals.user.id
-        //     }
-        // })
-        // if(checkUser.length == 0){
-        //     res.json({
-        //         message: "You do not have the authority to delete"
-        //     }) 
-        // }
         if(!await checkAdmin(res.locals.user.id , req.body.sessionId)){
             return res.json({
               message:'You are not an admin in this session'
@@ -22,7 +11,8 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
           }
         const user = await prisma.userAndSession.deleteMany({
             where:{
-                userId: req.body.userId
+                userId: req.params.userId ,
+                sessionId: req.params.sessionId
             }
         })
         if(user.count == 0){
