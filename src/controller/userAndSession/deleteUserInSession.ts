@@ -12,7 +12,7 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
         const user = await prisma.userAndSession.deleteMany({
             where:{
                 userId: req.params.userId ,
-                sessionId: req.params.sessionId
+                sessionId: req.params.id
             }
         })
         
@@ -22,14 +22,17 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
             })
             
         } else {
+            const user = req.params.userId
+            const ass = req.params.sessionId
             const deleteTasks = await prisma.task.deleteMany({
                 where:{
-                    assignToId:req.params.userId
+                    assignToId:req.params.userId,
+                    sessionId:req.params.id,
                 }
             }) 
             if (deleteTasks) {
                 res.json({
-                    message:"User deleted"
+                    message:"User deleted",user , ass
                 })
             }
         }
