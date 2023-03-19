@@ -22,6 +22,7 @@ router.get('/:id',auth , allUsersInSession)
 router.delete('/:id/:userId',auth, deleteUserInSession)
 router.put('/:id', addPointToUser)
 router.get('/points/:id', allUsersPointsInSession)
+router.get('/getPoint/:id',auth, getPoint)
 
 
 
