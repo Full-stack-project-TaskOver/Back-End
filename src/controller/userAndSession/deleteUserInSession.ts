@@ -15,14 +15,23 @@ export const deleteUserInSession = async (req:Request, res:Response)=>{
                 sessionId: req.params.sessionId
             }
         })
+        
         if(user.count == 0){
-            res.json({
-                message: "no user"
-            })  
-        } else {
             res.json({
                 message: "User deleted"
             })
+            
+        } else {
+            const deleteTasks = await prisma.task.deleteMany({
+                where:{
+                    assignToId:req.params.userId
+                }
+            }) 
+            if (deleteTasks) {
+                res.json({
+                    message:"User deleted"
+                })
+            }
         }
     }catch(error){
         console.log(error);

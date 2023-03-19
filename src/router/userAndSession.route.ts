@@ -18,11 +18,15 @@ const router = Router();
 router.post('/',auth , validate(addUsersToSessionValidate), addUsersToSession)
 router.post('/join-session',auth , validate(addUsersToSessionValidate), joinSession)
 
+<<<<<<< HEAD
 // router.get('/', allUsersInSessions)
 router.get('/:id', allUsersInSession)
 router.get('/point/:id',auth, getPoint)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
 router.get('/:sessionId',auth , allUsersInSession)
+=======
+router.get('/:id',auth , allUsersInSession)
+>>>>>>> 5715b2fb721abd5891bac27b368bebcc8232ba10
 router.delete('/:id/:userId',auth, deleteUserInSession)
 router.put('/:id', addPointToUser)
 router.get('/points/:id', allUsersPointsInSession)
