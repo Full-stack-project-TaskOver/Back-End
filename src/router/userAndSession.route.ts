@@ -24,7 +24,7 @@ router.get('/point/:id',auth, getPoint)
 router.delete('/',auth,validate(deleteUserInSessionValidate), deleteUserInSession)
 router.get('/:sessionId',auth , allUsersInSession)
 router.delete('/:id/:userId',auth, deleteUserInSession)
-router.put('/', addPointToUser)
+router.put('/:id', addPointToUser)
 router.get('/points/:id', allUsersPointsInSession)
 
 

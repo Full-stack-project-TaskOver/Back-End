@@ -16,6 +16,7 @@ export const allTaskInSession = async (req:Request, res:Response)=>{
                         status:true,
                         description:true,
                         createdDate: true,
+                        assignToId:true,
                         user:{
                             select:{
                                 id:true,

@@ -4,20 +4,21 @@ import { Request, Response } from 'express';
 
 export const addPointToUser = async (req: Request, res: Response) => {
     try{
-        const user = await prisma.userAndSession.findFirst({
+        // const user = await prisma.userAndSession.findFirst({
+        //     where:{
+        //         id: req.body.id
+        //     }
+        // })
+        // if(!user){
+        //     res.json('user is not is the session')
+        // }
+        const poit = await prisma.userAndSession.updateMany({
             where:{
-                id: req.body.id
-            }
-        })
-        if(!user){
-            res.json('user is not is the session')
-        }
-        const poit = await prisma.userAndSession.update({
-            where:{
-                id: req.body.id
+                sessionId: req.params.id,
+                userId: req.body.id
             },
             data:{
-                point: req.body.point
+                point: req.body.point 
             }
         })
         
